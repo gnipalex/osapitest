@@ -9,12 +9,17 @@ import org.openstack4j.model.compute.ext.Hypervisor;
 import org.openstack4j.model.network.Network;
 import org.openstack4j.model.network.Port;
 import org.openstack4j.openstack.OSFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        OSFactory.enableHttpLoggingFilter(true);
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
 
         OSClientV2 os = OSFactory.builderV2()
                         .endpoint(Credentials.KEYSTONE_AUTH_URL)

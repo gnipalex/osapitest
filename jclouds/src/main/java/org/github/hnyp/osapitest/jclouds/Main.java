@@ -4,8 +4,11 @@ import static com.google.common.collect.Sets.newHashSet;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toMap;
 
+import com.google.common.collect.Sets;
+import com.google.inject.Module;
 import org.github.hnyp.osapitest.common.Credentials;
 import org.jclouds.ContextBuilder;
+import org.jclouds.logging.slf4j.config.SLF4JLoggingModule;
 import org.jclouds.openstack.keystone.config.KeystoneProperties;
 import org.jclouds.openstack.neutron.v2.NeutronApi;
 import org.jclouds.openstack.neutron.v2.domain.Network;
@@ -221,10 +224,13 @@ public class Main {
         final Properties overrides = new Properties();
         overrides.put(KeystoneProperties.TENANT_NAME, Credentials.TENANT);
 
+        Set<Module> modules = Sets.newHashSet(new SLF4JLoggingModule());
+
         return ContextBuilder.newBuilder(provider)
                 .endpoint(Credentials.KEYSTONE_AUTH_URL)
                 .credentials(Credentials.USERNAME, Credentials.PASS)
                 .overrides(overrides)
+                .modules(modules)
                 .buildApi(apiType);
     }
 
