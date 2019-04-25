@@ -223,6 +223,7 @@ public class Main {
     static <T extends Closeable> T initApi(String provider, Class<T> apiType) {
         final Properties overrides = new Properties();
         overrides.put(KeystoneProperties.TENANT_NAME, Credentials.TENANT);
+        overrides.put("jclouds.wire.log.sensitive", Boolean.TRUE);
 
         Set<Module> modules = Sets.newHashSet(new SLF4JLoggingModule());
 
