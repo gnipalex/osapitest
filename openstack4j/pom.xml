@@ -26,23 +26,41 @@
             <groupId>org.pacesys</groupId>
             <artifactId>openstack4j</artifactId>
             <version>3.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.pacesys.openstack4j.connectors</groupId>
+                    <artifactId>openstack4j-resteasy</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.pacesys.openstack4j.connectors</groupId>
             <artifactId>openstack4j-httpclient</artifactId>
             <version>3.1.0</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.pacesys.openstack4j.connectors</groupId>-->
+            <!--<artifactId>openstack4j-okhttp</artifactId>-->
+            <!--<version>3.1.0</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.26</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.26</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.pacesys.openstack4j.plugins</groupId>-->
+            <!--<artifactId>openstack4j-slf4j</artifactId>-->
+            <!--<version>2.20</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>jcl-over-slf4j</artifactId>-->
+            <!--<version>1.7.26</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>jul-to-slf4j</artifactId>-->
+            <!--<version>1.7.26</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
