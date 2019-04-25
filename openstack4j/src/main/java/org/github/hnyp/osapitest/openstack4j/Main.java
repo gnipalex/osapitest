@@ -130,10 +130,13 @@ public class Main {
 
             String formattedRequestLine = formatRequestLine(request, httpContext);
 
-            if (!httpResponse.getEntity().isRepeatable()) {
-                httpResponse.setEntity(new BufferedHttpEntity(httpResponse.getEntity()));
+            String bodyContent = "<empty>";
+            if (httpResponse.getEntity() != null) {
+                if (!httpResponse.getEntity().isRepeatable()) {
+                    httpResponse.setEntity(new BufferedHttpEntity(httpResponse.getEntity()));
+                }
+                bodyContent = EntityUtils.toString(httpResponse.getEntity());
             }
-            String bodyContent = EntityUtils.toString(httpResponse.getEntity());
 
             LOG.info("Incoming response {} from {}, with body {}", httpResponse.getStatusLine(), formattedRequestLine,
                     bodyContent);
